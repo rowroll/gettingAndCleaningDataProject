@@ -23,6 +23,8 @@ The script run_analysis.R does the following:
    + train_y.txt (activites corresponding to train_X.txt, as integers 1-6)
    + train_subj.txt (subjects corresponding to train_X.txt, as integers 1-30)
    
+* The names of the activities (see activity_labels.txt)  were added to the activity identifying data in y_test.txt and y_train.txt.
+
 * The data in y_test.txt (ActivityId, and ActivityName), subject_test.txt (SubjectId), X_test.txt (measurements) was combined into one table. 
 
 * The data in y_train.txt (ActivityId, and ActivityName), subject_train.txt (SubjectId), X_train.txt (measurements) was combined into one table.
