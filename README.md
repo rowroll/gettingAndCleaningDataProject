@@ -29,7 +29,7 @@ The script run_analysis.R does the following:
 
 * The data in y_train.txt (ActivityId, and ActivityName), subject_train.txt (SubjectId), X_train.txt (measurements) was combined into one table.
 
-* The two big tables were combined, and given header names for the activity columns, and subject Id.  The remainder of columns got names derived directly from features.txt.
+* The two big tables were combined, and given header names for the activity columns, and subject Id.  The remainder of columns got names derived directly from features.txt, which contains the identifying name of each measurement.
 
 *  Using this big table, a subset of it was created including only the activity and subjectId info, as well as only the mean() and std() measurements.
 
