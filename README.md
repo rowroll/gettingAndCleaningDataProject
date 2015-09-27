@@ -33,6 +33,6 @@ The script run_analysis.R does the following:
 
 *  Using this big table, a subset of it was created including only the activity and subjectId info, as well as only the mean() and std() measurements.
 
-* This table-subset was then used to only select observations belonging to one activity and one subject, and the average of each mean() and std() measurement was found and recorded, one number per measurement.
+* This table-subset was then used to only select observations belonging to one activity and one subject, and the average of each mean() and std() measurement was found and recorded, one number per measurement type.
 
-* This information was stored in a new table, and saved as tidyData.txt.
+* The averaged data were collected into a new table (tidyData), along with the corresponding activity info and subjectId, and writted out to tidyData.txt.
