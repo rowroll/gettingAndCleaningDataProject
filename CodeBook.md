@@ -81,7 +81,75 @@ Each observation (i.e. row) describes the average of each original variable (see
 68. fBodyBodyGyroJerkMag-mean()
 69. fBodyBodyGyroJerkMag-std()
 
-The precise defintion of each measured variable is found in the documentation of the original data set.
+The precise defintion of each measured variable is found in the documentation of the original data set names "features_info.txt".  It reads as follows:
+
+### Feature Selection 
+
+The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain 
+signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass 
+Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity 
+acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
+
+Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). 
+Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, 
+tBodyGyroMag, tBodyGyroJerkMag). 
+
+Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, 
+fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
+
+These signals were used to estimate variables of the feature vector for each pattern:  
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
+
+tBodyAcc-XYZ
+tGravityAcc-XYZ
+tBodyAccJerk-XYZ
+tBodyGyro-XYZ
+tBodyGyroJerk-XYZ
+tBodyAccMag
+tGravityAccMag
+tBodyAccJerkMag
+tBodyGyroMag
+tBodyGyroJerkMag
+fBodyAcc-XYZ
+fBodyAccJerk-XYZ
+fBodyGyro-XYZ
+fBodyAccMag
+fBodyAccJerkMag
+fBodyGyroMag
+fBodyGyroJerkMag
+
+The set of variables that were estimated from these signals are: 
+
+mean(): Mean value
+std(): Standard deviation
+mad(): Median absolute deviation 
+max(): Largest value in array
+min(): Smallest value in array
+sma(): Signal magnitude area
+energy(): Energy measure. Sum of the squares divided by the number of values. 
+iqr(): Interquartile range 
+entropy(): Signal entropy
+arCoeff(): Autorregresion coefficients with Burg order equal to 4
+correlation(): correlation coefficient between two signals
+maxInds(): index of the frequency component with largest magnitude
+meanFreq(): Weighted average of the frequency components to obtain a mean frequency
+skewness(): skewness of the frequency domain signal 
+kurtosis(): kurtosis of the frequency domain signal 
+bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
+angle(): Angle between to vectors.
+
+Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
+
+gravityMean
+tBodyAccMean
+tBodyAccJerkMean
+tBodyGyroMean
+tBodyGyroJerkMean
+
+The complete list of variables of each feature vector is available in 'features.txt'
+
+
+
 
 ## The Original Data
 
@@ -165,17 +233,12 @@ The original dataset was fragmented, and the following steps were taken to unify
 
 First of all the names of the activities (see activity_labels.txt)  were added to the activity identifying data in y_test.txt and y_train.txt.
 
-Then, the data in y_test.txt (ActivityId, and ActivityName), subject_test.txt (SubjectId), X_test.txt (measurements) were combined into one table, and the same was done with  y_train.txt (ActivityId, and ActivityName), subject_train.txt (SubjectId), X_train.txt (measurements).
+Then, the data in y_test.txt (ActivityId, and ActivityName), subject_test.txt (SubjectId), X_test.txt (measurements) was combined into one table, and the same was done with  y_train.txt (ActivityId, and ActivityName), subject_train.txt (SubjectId), X_train.txt (measurements).
 
-Next, the two big tables were combined, and given header names for the activity columns, and subject Id.  The remainder of columns got names derived straight from features.txt.
+Next, the two big tables were combined, and given header names for the activity columns, and subject Id.  The remainder of columns got names derived straight from features.txt, which contains the identifying name of each measurement.
 
 Once the big table had been created, a subset of it was created including only the activity and subjectId info, as well as only the mean() and std() measurements.
 
 This table was then used to only select observations belonging to one activity and one subject, and the average of each mean() and std() measurement was found and recorded, one number per measurement.
 
-This information was stored in a new table, and saved as tidyData.txt.
-
-
-
-
-
+The averaged data were collected into a new table (tidyData), along with the corresponding activity info and subjectId, and writted out to tidyData.txt.
